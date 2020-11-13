@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="css/ding.css" />
+        <script src="js/ding.js"></script>
+	</head>
+	<body>
+	    <input id="hidElement" type="hidden" name="element"/>
+	    <div class="zoom-box">
+	        <div id="scalePercent">100%</div>
+	        <div class="">zoom</div>
+	        <div id="zoomOut" class="iconfont">&#xe602;</div>
+	        <div id="zoomIn" class="iconfont">&#xe604;</div>
+	    </div>
+	    <div id="addcontent" class="dataContent container" value="1">
+	        <div id="content">
+    	        <div class="node-wrap">
+    	            <div class="node-wrap-box node-start">
+    	                <div class="node-wrap-body">审批流开始</div>
+    	            </div>
+    	            <div class="add-node-btn-box"><div class="add-node-btn"><button class="btn" type="button"><span class="iconfont">&#xe602;</span></button></div></div>
+    	        </div>
+    	    	
+    	    	  <div class="node-wrap end-node">
+                    <div class="node-wrap-box node-end">
+                        <div class="node-wrap-body">
+                        	  结束
+                        </div>
+                                                                  
+                    </div>
+                </div>
+    	    </div>
+	    </div>
+	    
+	    <!--选择审批人、抄送人测弹框-->
+	    <div class="drawerMask"></div>
+	    <div class="drawerDialogContainer">
+	        <div id="addcontentPop" class="dataContent">
+	            <div id="approveBox" name="审批人/抄送人选择" style="display:none;">
+                    <div class="pack">
+                        <div class="code-header"><span class="iconfont">&#xe6d8;</span>基础规则设置</div>
+                        <div class="code-body">
+                            <div class="code-pack">
+                                <div><b class="redxing">*</b>步骤名称：</div>
+                                <div><input type="text" name="stepName" style="width:250px;height:28px;"/></div>
+                            </div>
+                            <div class="code-pack" id="trAdvance">
+                                <div>允许推送：</div>
+                                <div class="switch_wrap">
+                                    <input type="checkbox" name="pushFlag" id="pushFlag" checked>
+                                    <label for="pushFlag" class="switch_label" data-checked="true"><em></em></label>
+                                </div>
+                            </div>
+                            <div class="code-pack" id="trPermitInsert">
+                                <div>允许此步骤后插入特殊审批流：</div>
+                                <div class="switch_wrap">
+                                    <input type="checkbox" name="permitInsertFlag" id="permitInsertFlag">
+                                    <label for="permitInsertFlag" class="switch_label"><em></em></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pack">
+                       <div class="code-header"><span class="iconfont">&#xe6d8;</span>自动选人规则</div>
+                       <div class="code-body">
+                            <ul class="audit_ul">
+                                <li><label for="audit00"><input checked="checked" id="audit00" type="radio" name="auditRule"/><span>部门角色</span></label></li>
+                                <li><label for="audit01"><input id="audit01" type="radio" name="auditRule"/><span>自动选择流程发起人</span></label></li>
+                                <li><label for="audit02"><input id="audit02" type="radio" name="auditRule"/><span>流程发起人部门</span></label></li>
+                                <li><label for="audit03"><input id="audit03" type="radio" name="auditRule"/><span>流程发起人部门主管</span></label></li>
+                                <li><label for="audit04"><input id="audit04" type="radio" name="auditRule"/><span>流程发起人上级部门主管</span></label></li>
+                                <li><label for="audit05"><input id="audit05" type="radio" name="auditRule"/><span>自动选择团队操作人</span></label></li>
+                                <li><label for="audit06"><input id="audit06" type="radio" name="auditRule"/><span>团队操作人部门</span></label></li>
+                                <li><label for="audit07"><input id="audit07" type="radio" name="auditRule"/><span>团队操作人部门主管</span></label></li>
+                                <li><label for="audit08"><input id="audit08" type="radio" name="auditRule"/><span>团队操作人上级部门主管</span></label></li>
+                                <li><label for="audit09"><input id="audit09" type="radio" name="auditRule"/><span>自动选择原团队操作人</span></label></li>
+                                <li><label for="audit10"><input id="audit10" type="radio" name="auditRule"/><span>原团队操作人部门</span></label></li>
+                               
+                            </ul>
+                            <div class="code-pack">
+                                <div>按部门：</div>
+                            	<div id="divDept">
+                                    <input type="hidden" value="[]">
+                                    <input type="text" style="width:60%; background-color: white;" autocomplete="off" disabled="disabled" valuefield="" textfield="">
+                                    <span class="editmore" title="选择"></span>
+                                    &nbsp;<span class="blue" style="cursor: pointer">清空</span>
+                                </div>
+                            </div>
+                            <div class="code-pack">
+                                <div>按角色：</div>
+                                <div id="divDept">
+                                    <input type="hidden" value="[]">
+                                    <input type="text" style="width:60%; background-color: white;" autocomplete="off" disabled="disabled" valuefield="" textfield="">
+                                    <span class="editmore" title="选择"></span>
+                                    &nbsp;<span class="blue" style="cursor: pointer">清空</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pack">
+                        <div class="code-header">审批规则</div>
+                        <div class="code-body">
+                            <ul class="audit_ul">
+                                <li style="width:100%;"><label for="audit00"><input checked="checked" id="audit00" type="radio" name="approvalRule"/><span>或签</span></label></li>
+                                <li style="width:100%;"><label for="audit01"><input id="audit01" type="radio" name="auditRule" name="approvalRule"/><span>会签</span></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                      
+                </div>
+    	        <div id="branchBox" name="条件选择" style="display:none;">
+    	            <div class="pack">
+                        <div class="code-header"><span class="iconfont">&#xe6d8;</span>设置条件</div>
+                        <div class="code-body">
+                            <div class="code-pack">
+                                <div><b class="redxing">*</b>步骤名称：</div>
+                                <div><input type="text" name="stepName" style="width:250px;height:28px;"/></div>
+                            </div>
+                            <div class="code-pack">
+                                <div>条件类型：</div>
+                                <div>
+                                    <ul class="audit_ul" id="flowApprovalCondition"></ul>
+                                </div>
+                            </div>
+                            <div class="code-pack" id="trFlowApprovalCondition2">
+                                <div>选择团队类型：</div>
+                                <div>
+                                    <ul class="audit_ul" id="projectType"></ul>
+                                </div>
+                            </div>
+                            <div class="code-pack" id="trFlowApprovalCondition1">
+                                <div>选择部门：</div>
+                                <div><ul class="audit_ul" id="divRuleDept"></ul></div>
+                            </div>
+                            <div class="code-pack" id="trFlowApprovalCondition3">
+                                <div id="spanConditionDesc3"><b class="redxing">*</b>毛利率条件：</div>
+                                <div><span id="spanCondition3">小于等于</span><input id="txtAmount3" type="text" inptype="money"><span id="spanConditionUnit3">%</span></div>
+                            </div>
+                            <div class="code-pack" id="trFlowApprovalCondition4">
+                                <div id="spanConditionDesc4"><b class="redxing">*</b>金额条件：</div>
+                                <div><span id="spanCondition4">小于等于</span><input id="txtAmount4" type="text" inptype="money"><span id="spanConditionUnit4">%</span></div>
+                            </div>
+    	               </div>
+	                </div>
+            	</div>
+            </div>
+	           
+	        <div id="secondfooter" class="listBottomBar">
+	            <span class="pagebtn" id="btnSetSave">确定</span>  
+	            <span class="pagebtn" id="btnSetCancel">取消</span>
+	        </div>
+	    </div>
+<!--选择流程弹出框-->
+<div class="popover">
+    <div class="popover-header">
+        <span id="close" class="iconfont close">&#xe664;</span>
+    </div>
+    <div class="popover-content">
+        <div class="popover-node-item">
+            <div class="item-wrapper" id="approvalBtn">
+                <span class="iconfont icon-01">&#xe680;</span>
+            </div>
+        </div>
+        <div class="popover-node-item">
+            <div class="item-wrapper" id="copyBtn">
+                <span class="iconfont icon-02">&#xe605;</span>
+            </div>
+        </div>
+        
+       <div class="popover-node-item">
+            <div class="item-wrapper" id="branchBtn">
+                <span class="iconfont icon-03">&#xe644;</span>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!--条件分支-->
+<div id="branchFirstHtmlTemp" style="display:none;">
+    <div class="branch-wrap">
+        <div class="branch-box-wrap">
+            <div class="branch-box">
+                <div class="add-branch">添加条件</div>
+                <div class="col-box">
+                    <div class="condition-node">
+                        <div class="top-left-cover-line"></div>
+                    <div class="bottom-left-cover-line"></div>
+                        <div class="condition-node-box">
+                            <div class="auto-judge">
+                                <div class="auto-judge-header">
+                                    <span class="auto-judge-tit">条件1 </span>
+                                    <span class="auto-judge-tit-close iconfont" name="judge-close">&#xe664;</span>
+                                </div>
+                                <div class="auto-judge-body">
+                                    <div class="auto-judge-body-txt">请设置条件</div>
+                                </div>                                                           
+                            </div>
+                            <div class="add-node-btn">
+                                <button class="btn" type="button"><span class="iconfont">&#xe602;</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col-box">
+                    <div class="condition-node">
+                        <div class="condition-node-box">
+                            <div class="auto-judge">
+                                <div class="auto-judge-header">
+                                    <span class="auto-judge-tit">条件2</span>
+                                    <span class="auto-judge-tit-close iconfont" name="judge-close">&#xe664;</span>
+                                </div>
+                                <div class="auto-judge-body">
+                                    <div class="auto-judge-body-txt">请设置条件</div>
+                                </div>  
+                            </div>
+                            <div class="add-node-btn">
+                                <button class="btn" type="button"><span class="iconfont">&#xe602;</span></button>
+                            </div>
+                        </div>
+                        <div class="top-right-cover-line"></div>
+                        <div class="bottom-right-cover-line"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="add-node-btn-box">
+                <div class="add-node-btn"><button class="btn" type="button"><span class="iconfont">&#xe602;</span></button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--平级添加条件-->
+<div id="branchNodeHtmlTemp" style="display:none;">
+    <div class="col-box">
+        <div class="condition-node">
+            <div class="condition-node-box">
+                <div class="auto-judge">
+                    <div class="auto-judge-header">
+                        <span class="auto-judge-tit">条件n</span>
+                        <span class="auto-judge-tit-close iconfont" name="judge-close">&#xe664;</span>
+                    </div>
+                    <div class="auto-judge-body">
+                        <div class="auto-judge-body-txt">请设置条件</div>
+                    </div>                                                           
+                </div>
+                <div class="add-node-btn">
+                    <button class="btn" type="button"><span class="iconfont">&#xe602;</span></button>
+                </div>
+            </div>
+            <div class="top-right-cover-line"></div>
+            <div class="bottom-right-cover-line"></div>
+        </div>
+    </div>
+</div>
+
+<!--审批节点-->
+<div id="approvalHtmlTemp" style="display:none;">
+    <div class="node-wrap"  id="box{0}">
+        <div class="node-wrap-box">
+            <div class="node-wrap-header node-approval">
+                <span class="node-wrap-tit"><i class="iconfont">&#xe605;</i>审批人</span>
+                <span class="node-wrap-tit-close iconfont"  name="node-close">&#xe664;</span>
+            </div>
+            <div class="node-wrap-body">
+                 <div class="node-wrap-body-txt">请选择审批人<span class="iconfont">&#xe786;</span></div>
+            </div>                      
+        </div>
+        <div class="add-node-btn-box"><div class="add-node-btn"><button class="btn" type="button"><span class="iconfont">&#xe602;</span></button></div></div>
+    </div>
+</div>
+<!--抄送节点-->
+<div id="copyHtmlTemp" style="display:none;">
+    <div class="node-wrap" id="box{0}">
+        <div class="node-wrap-box">
+            <div class="node-wrap-header node-cope">
+                <span class="node-wrap-tit"><i class="iconfont">&#xe605;</i>抄送人</span>
+                <span class="node-wrap-tit-close iconfont"  name="node-close">&#xe664;</span>
+            </div>
+            <div class="node-wrap-body">
+                 <div class="node-wrap-body-txt">请选择抄送人<span class="iconfont">&#xe786;</span></div>
+            </div>                      
+        </div>
+        <div class="add-node-btn-box"><div class="add-node-btn"><button class="btn" type="button"><span class="iconfont">&#xe602;</span></button></div></div>
+    </div>
+</div>
+
+	</body>
+</html>
+ 

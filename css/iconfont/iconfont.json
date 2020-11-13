@@ -1,0 +1,107 @@
+{
+  "id": "1803347",
+  "name": "审批流",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8355299",
+      "name": "清除",
+      "font_class": "qingchu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "16024381",
+      "name": "规则设置",
+      "font_class": "guizeshezhi",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
+      "icon_id": "16093678",
+      "name": "查看列表",
+      "font_class": "chakanliebiao",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "5422763",
+      "name": "减号",
+      "font_class": "-hao1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "6665743",
+      "name": "关  闭",
+      "font_class": "guanbi",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "8995205",
+      "name": "加号",
+      "font_class": "iconjia",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "13372290",
+      "name": "左右",
+      "font_class": "zuoyou",
+      "unicode": "e785",
+      "unicode_decimal": 59269
+    },
+    {
+      "icon_id": "14446964",
+      "name": "加号",
+      "font_class": "jia",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "14555667",
+      "name": "左右",
+      "font_class": "zuoyou-copy",
+      "unicode": "e786",
+      "unicode_decimal": 59270
+    },
+    {
+      "icon_id": "8202658",
+      "name": "分支",
+      "font_class": "fenzhi",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12201569",
+      "name": "分支",
+      "font_class": "fenzhi1",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "1287591",
+      "name": "审批",
+      "font_class": "shenpi",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "5334145",
+      "name": "分支机构",
+      "font_class": "fenzhijigou",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "12911863",
+      "name": "抄送",
+      "font_class": "chaosong",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}
